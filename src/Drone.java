@@ -13,6 +13,9 @@ public class Drone extends Robot {
 		
 		// TODO Auto-generated constructor stub
 	}
+	public Drone(Case position, int quantiteEau) throws VitesseUnpermited {
+		this(position,quantiteEau,150);
+	}
 
 	@Override
 	public double getVitesse(NatureTerrain nature) {
