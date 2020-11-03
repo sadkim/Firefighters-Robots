@@ -1,25 +1,33 @@
 
 
 abstract public class Robot {
+	
 	protected Case position;
 	protected int quantiteEau;
+	protected int vitesse;
+	
+	public Robot(Case position, int quantiteEau, int vitesse) {
+		this.position 		= position		;
+		this.quantiteEau 	= quantiteEau	;
+		this.vitesse 		= vitesse		;
+	}
+	
+	
 	public Case getPosition() {
 		return position;
 	}
 	public void setPosition(Case position) {
 		this.position = position;
 	}
-	abstract public double getVitesse(NatureTerrain nature);
-	abstract public void remplirReservoir();
-	abstract public int getInterventionVolume();
-	abstract public int getInterventionTime();
-	abstract public int getMaxQuantite();
+	
+	
 	public int getQuantiteEau() {
 		return quantiteEau;
 	}
-	protected void setQuantiteEau(int quantiteEau) {
-		this.quantiteEau = quantiteEau;
-	}
+	
+		
+	
+	
 	public void deverserEau(int vol) throws incompatibleVolume, insuficcientQuantity {
 		//TODO Réduir quantité d'eau nécessaire au cas d'incendie
 		if((vol % getInterventionVolume())!=0) {
@@ -31,8 +39,15 @@ abstract public class Robot {
 				getQuantiteEau() + " L tied to use" + vol + " L resevoire max quantity is "
 					+ getMaxQuantite() );
 		}
-		setQuantiteEau(quantiteEau-vol);
+		this.quantiteEau = quantiteEau-vol;
 		
 	}
+	
+	abstract public double 	getVitesse(NatureTerrain nature);	
+	abstract public int 	getInterventionVolume();
+	abstract public int 	getInterventionTime();
+	abstract public void 	remplirReservoir();
+	abstract public int 	getRemplisagetime();
+	abstract public int 	getMaxQuantite();
 	
 }

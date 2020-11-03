@@ -1,9 +1,9 @@
 public class Carte {
 	private int tailleCase;
 	private int nbLignes, nbColonnes;
-	private Case[][] matriceCase = new Case[nbLignes][];
-	for (int i=0 ; i<matriceCase.lengh; i++) 
-	    matriceCase[i] = new Case[nbColonnes];
+	private Case[][] matriceCase = new Case[nbLignes][nbColonnes];{
+	for (int i=0 ; i<matriceCase.length; i++) 
+	    matriceCase[i] = new Case[nbColonnes];}
 	
  
 	public Carte(int nbLignes, int nbColonnes) {
@@ -29,35 +29,28 @@ public class Carte {
 		switch (dir) {
 			case NORD:
 				return src.getLigne() > 0;
-				break;
 			case SUD:
 				return src.getLigne() < nbLignes;
-				break;
 			case OUEST:
 				return src.getColonne() > 0;
-				break;
-			case EST:
+			default:
 				return src.getColonne() < nbColonnes;
-				break; 
 		}
 	}
 	
-	public Case getVoisin(Case src, Direction dir) {
+	public Case getVoisin(Case src, Direction dir) throws InvalidCase {
 		if (voisinExiste(src, dir)) {
 			switch (dir) {
 			case NORD:
 				return getCase(src.getLigne()-1, src.getColonne());
-				break;
 			case SUD:
 				return getCase(src.getLigne()+1, src.getColonne());
-				break;
 			case EST:
 				return getCase(src.getLigne(), src.getColonne()+1);
-				break;
-			case OUEST:
+			default:
 				return getCase(src.getLigne(), src.getColonne()-1);
-				break; 
 		}
 		}
+		throw new InvalidCase("pas de voisin");
 	}
 }
