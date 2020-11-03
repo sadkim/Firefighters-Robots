@@ -10,8 +10,6 @@ public class Drone extends Robot {
 		}else if(vitesse<0) {
 			throw new VitesseUnpermited("vitesse negative :" + vitesse + " km/h");
 		}
-		
-		// TODO Auto-generated constructor stub
 	}
 	public Drone(Case position, int quantiteEau) throws VitesseUnpermited {
 		this(position,quantiteEau,150);
@@ -21,12 +19,6 @@ public class Drone extends Robot {
 	public double getVitesse(NatureTerrain nature) {
 		// TODO Auto-generated method stub
 		return vitesse;
-	}
-
-	@Override
-	public void remplirReservoir() {
-		// TODO verify the Case
-		this.quantiteEau = 10000;
 	}
 
 	@Override

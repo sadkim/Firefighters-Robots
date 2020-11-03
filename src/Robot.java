@@ -43,10 +43,13 @@ abstract public class Robot {
 		
 	}
 	
+	public void remplirReservoir() {
+		this.quantiteEau=getMaxQuantite();
+	};
+	
 	abstract public double 	getVitesse(NatureTerrain nature);	
 	abstract public int 	getInterventionVolume();
 	abstract public int 	getInterventionTime();
-	abstract public void 	remplirReservoir();
 	abstract public int 	getRemplisagetime();
 	abstract public int 	getMaxQuantite();
 	
