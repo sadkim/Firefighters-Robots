@@ -1,3 +1,5 @@
+import Exception.InvalidCase;
+
 public class Carte {
 	private int tailleCase;
 	private int nbLignes, nbColonnes;

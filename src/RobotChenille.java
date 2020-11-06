@@ -1,47 +1,51 @@
+import Exception.VitesseUnpermited;
 
 public class RobotChenille extends Robot {
 
-	public RobotChenille(Case position, int quantiteEau, int vitesse) {
+	public RobotChenille(Case position, int quantiteEau, int vitesse) throws VitesseUnpermited {
 		super(position, quantiteEau, vitesse);
+		if(vitesse>150) {
+			throw new VitesseUnpermited("vitesse maximal ne doit pas depasser 150 km/h"
+					+ " vitesse trouvé"+ vitesse +" km/h");
+		}else if(vitesse<0) {
+			throw new VitesseUnpermited("vitesse negative :" + vitesse + " km/h");
+		}
 	}
-	public RobotChenille(Case position, int quantiteEau) {
+	public RobotChenille(Case position, int quantiteEau) throws VitesseUnpermited {
 		this(position, quantiteEau, 60);
 	}
 
 	@Override
 	public double getVitesse(NatureTerrain nature) {
-		// TODO Auto-generated method stub
-		return 0;
+		switch(nature) {
+		case FORET:
+			return vitesse/2;
+		case TERAIN_LIBRE:
+		case HABITAT:
+			return vitesse;
+		default:
+			return 0;
+		}
 	}
 
 	@Override
 	public int getInterventionVolume() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 100;
 	}
 
 	@Override
 	public int getInterventionTime() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void remplirReservoir() {
-		// TODO Auto-generated method stub
-
+		return 8;
 	}
 
 	@Override
 	public int getRemplisagetime() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 600;
 	}
 
 	@Override
 	public int getMaxQuantite() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 2000;
 	}
 
 }
