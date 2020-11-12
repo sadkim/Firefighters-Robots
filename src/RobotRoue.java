@@ -7,37 +7,41 @@ public class RobotRoue extends Robot {
 		if(vitesse<0) {
 			throw new VitesseUnpermited("vitesse negative :" + vitesse + " km/h");
 		}
-		// TODO Auto-generated constructor stub
 	}
 
+	public RobotRoue(Case position, int quantiteEau) throws VitesseUnpermited {
+		super(position, quantiteEau, 80);
+	}
 	@Override
 	public double getVitesse(NatureTerrain nature) {
-		// TODO Auto-generated method stub
-		return 0;
+		switch(nature) {
+		case TERAIN_LIBRE:
+		case HABITAT:
+			return vitesse;
+		default:
+			return 0;		
+		}
 	}
 
 	@Override
 	public int getInterventionVolume() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 100;
 	}
 
 	@Override
 	public int getInterventionTime() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 5;
 	}
 
 	@Override
 	public int getRemplisagetime() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 10;
 	}
 
 	@Override
 	public int getMaxQuantite() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 10000;
 	}
 
 }
