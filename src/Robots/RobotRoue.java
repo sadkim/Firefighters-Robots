@@ -18,7 +18,7 @@ public class RobotRoue extends Robot {
 	@Override
 	public double getVitesse(NatureTerrain nature) {
 		switch(nature) {
-		case TERAIN_LIBRE:
+		case TERRAIN_LIBRE:
 		case HABITAT:
 			return vitesse;
 		default:

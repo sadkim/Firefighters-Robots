@@ -23,7 +23,7 @@ public class RobotChenille extends Robot {
 		switch(nature) {
 		case FORET:
 			return vitesse/2;
-		case TERAIN_LIBRE:
+		case TERRAIN_LIBRE:
 		case HABITAT:
 			return vitesse;
 		default:
