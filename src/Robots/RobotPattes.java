@@ -41,10 +41,4 @@ public class RobotPattes extends Robot {
 	public int getMaxQuantite() {
 		return 0;
 	}
-
-	@Override
-	public void deverserEau(int vol) throws incompatibleVolume, insuficcientQuantity {
-		return;
-	}
-
 }

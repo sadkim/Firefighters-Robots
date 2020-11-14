@@ -5,6 +5,7 @@ import java.awt.image.ImageObserver;
 import gui.GraphicalElement;
 import gui.ImageElement;
 
+
 public class Case {
 	private int ligne;
 	private int colonne;

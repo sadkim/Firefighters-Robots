@@ -5,7 +5,6 @@ public class Incendie {
 	private int volPourEteindre;
 	
 	public Incendie(Case position, int volPourEteindre) {
-		super();
 		this.position = position;
 		this.volPourEteindre = volPourEteindre;
 	}
@@ -17,5 +16,7 @@ public class Incendie {
 	public int getVolPourEteindre() {
 		return volPourEteindre;
 	}
-	
+	public void setVol(int vol) {
+		this.volPourEteindre = Math.max(0, this.volPourEteindre - vol);
+	}
 }

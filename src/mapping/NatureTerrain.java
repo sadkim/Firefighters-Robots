@@ -1,6 +1,7 @@
 package mapping;
+
 public enum NatureTerrain {
-	EAU("eau.png"), FORET("foret.png"), ROCHE("roche.png"), TERAIN_LIBRE("terain_libre.png"),HABITAT("habitat.png");
+	EAU("../img/eau.png"), FORET("../img/foret.png"), ROCHE("../img/roche.png"), TERRAIN_LIBRE("../img/terrain_libre.png"),HABITAT("../img/habitat.png");
 	private String filePath;
 
 	private NatureTerrain(String filePath) {

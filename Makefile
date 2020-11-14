@@ -35,7 +35,7 @@ testLecture:
 # ou bien lancer l'execution en passant par ce Makefile:
 #   > make exeInvader
 exeInvader: 
-	java -classpath bin:bin/gui.jar TestInvader
+	java -classpath bin:bin/gui.jar tests/TestInvader
 
 exeLecture: 
 	java -classpath bin TestLecteurDonnees cartes/carteSujet.map

@@ -2,7 +2,7 @@ package Gui;
 
 import gui.Simulable;
 
-public class simulateur implements Simulable{
+public class Simulateur implements Simulable{
 
 	@Override
 	public void next() {
