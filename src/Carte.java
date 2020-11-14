@@ -1,9 +1,9 @@
 import Exception.InvalidCase;
 
 public class Carte {
-	private int tailleCase;
+	private int tailleCases;
 	private int nbLignes, nbColonnes;
-	private Case[][] matriceCase = new Case[nbLignes][nbColonnes];{
+	private Case[][] matriceCase = new Case[nbLignes][];{
 	for (int i=0 ; i<matriceCase.length; i++) 
 	    matriceCase[i] = new Case[nbColonnes];}
 	
@@ -15,7 +15,7 @@ public class Carte {
 
 
 	public int getTailleCase() {
-		return tailleCase;
+		return tailleCases;
 	}
 	public int getNbLignes() {
 		return nbLignes;
