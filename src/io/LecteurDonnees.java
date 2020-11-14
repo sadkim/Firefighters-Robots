@@ -121,7 +121,7 @@ public class LecteurDonnees {
         System.out.println();
     }
 
-
+    
     /**
      * Lit et affiche les donnees des incendies.
      */

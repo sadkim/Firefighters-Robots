@@ -1,4 +1,7 @@
+package Robots;
 import Exception.VitesseUnpermited;
+import mapping.Case;
+import mapping.NatureTerrain;
 
 public class RobotRoue extends Robot {
 

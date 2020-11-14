@@ -1,5 +1,8 @@
+package Robots;
 import Exception.incompatibleVolume;
 import Exception.insuficcientQuantity;
+import mapping.Case;
+import mapping.NatureTerrain;
 
 abstract public class Robot {
 	
@@ -18,6 +21,7 @@ abstract public class Robot {
 		return position;
 	}
 	public void setPosition(Case position) {
+		// si case hors map ?
 		this.position = position;
 	}
 	
@@ -30,7 +34,7 @@ abstract public class Robot {
 	
 	
 	public void deverserEau(int vol) throws incompatibleVolume, insuficcientQuantity {
-		//TODO Réduir quantité d'eau nécessaire au cas d'incendie
+		//TODO Réduire quantité d'eau nécessaire au cas d'incendie
 		if((vol % getInterventionVolume())!=0) {
 			throw new incompatibleVolume("should be a multiple of " +
 				getInterventionVolume() + " L found" + vol+ " L");
