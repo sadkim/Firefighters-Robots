@@ -1,10 +1,26 @@
 package Robots;
+import java.awt.image.ImageObserver;
+
 import Exception.VitesseUnpermited;
+import gui.GraphicalElement;
+import gui.ImageElement;
 import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotChenille extends Robot {
+	protected GraphicalElement  graphic;
+	protected ImageObserver obs;
+	@Override
 
+	public GraphicalElement getGraphic() {
+		return graphic;
+	}
+
+	@Override
+
+	public ImageObserver getObs() {
+		return obs;
+	}
 	public RobotChenille(Case position, int quantiteEau, int vitesse) throws VitesseUnpermited {
 		super(position, quantiteEau, vitesse);
 		if(vitesse>150) {
@@ -13,7 +29,9 @@ public class RobotChenille extends Robot {
 		}else if(vitesse<0) {
 			throw new VitesseUnpermited("vitesse negative :" + vitesse + " km/h");
 		}
-	}
+		int taille =40;
+		String fileName=NatureTerrain.ROCHE.getFilePath();
+		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);	}
 	public RobotChenille(Case position, int quantiteEau) throws VitesseUnpermited {
 		this(position, quantiteEau, 60);
 	}
@@ -23,7 +41,7 @@ public class RobotChenille extends Robot {
 		switch(nature) {
 		case FORET:
 			return vitesse/2;
-		case TERAIN_LIBRE:
+		case TERRAIN_LIBRE:
 		case HABITAT:
 			return vitesse;
 		default:

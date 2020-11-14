@@ -7,11 +7,12 @@ import LectureDonnees.DonneesSimulation;
 import io.LecteurDonnees;
 
 public class Pompier {
+	public static DonneesSimulation sim ;
 
 	public static void main(String[] args) throws FileNotFoundException, DataFormatException, VitesseUnpermited {
 		// TODO Auto-generated method stub
 		System.out.println(args[0]);
-		DonneesSimulation sim = LecteurDonnees.creeDonnees(args[0]);
+		sim= LecteurDonnees.creeDonnees(args[0]);
 
 	}
 
