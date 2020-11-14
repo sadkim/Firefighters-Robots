@@ -5,8 +5,9 @@ import mapping.*;
 
 abstract public class Robot {
 	
+	
 	protected Case position;
-	protected int quantiteEau;
+	protected int quantiteEau = 0;
 	protected int vitesse;
 	
 	public Robot(Case position, int quantiteEau, int vitesse) {
@@ -29,8 +30,10 @@ abstract public class Robot {
 		return quantiteEau;
 	}
 	
-		
 	
+	public void setVitesse(int vitesse) {
+		this.vitesse = vitesse;
+	}
 	
 	public void deverserEau(int vol, Incendie incendie) throws incompatibleVolume, insuficcientQuantity {
 		//TODO Réduire quantité d'eau nécessaire au cas d'incendie
