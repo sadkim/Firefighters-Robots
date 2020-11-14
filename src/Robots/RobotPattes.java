@@ -1,5 +1,8 @@
+package Robots;
 import Exception.incompatibleVolume;
 import Exception.insuficcientQuantity;
+import mapping.Case;
+import mapping.NatureTerrain;
 
 public class RobotPattes extends Robot {
 

@@ -1,18 +1,24 @@
+package mapping;
+
 import Exception.InvalidCase;
 
 public class Carte {
 	private int tailleCases;
 	private int nbLignes, nbColonnes;
-	private Case[][] matriceCase = new Case[nbLignes][];{
-	for (int i=0 ; i<matriceCase.length; i++) 
-	    matriceCase[i] = new Case[nbColonnes];}
+	private Case[][] matriceCase;
 	
- 
+
 	public Carte(int nbLignes, int nbColonnes) {
 		this.nbLignes = nbLignes;
 		this.nbColonnes = nbColonnes;
 	}
-
+	
+	public Carte(int nbLignes, int nbColonnes, int tailleCases, Case[][] matrice) {
+		this.nbLignes = nbLignes;
+		this.nbColonnes = nbColonnes;
+		this.matriceCase = matrice;
+		this.tailleCases = tailleCases;
+	}
 
 	public int getTailleCase() {
 		return tailleCases;
@@ -55,4 +61,6 @@ public class Carte {
 		}
 		throw new InvalidCase("pas de voisin");
 	}
+	
+
 }

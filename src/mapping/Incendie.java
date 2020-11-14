@@ -1,3 +1,4 @@
+package mapping;
 
 public class Incendie {
 	private Case position;

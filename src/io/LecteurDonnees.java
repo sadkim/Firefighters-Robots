@@ -1,9 +1,12 @@
 package io;
 
-
+import Robots.*;
+import mapping.*;
 import java.io.*;
 import java.util.*;
 import java.util.zip.DataFormatException;
+
+import Exception.VitesseUnpermited;
 
 
 
@@ -246,7 +249,151 @@ public class LecteurDonnees {
         }
     }
     
-    public static DonneesSimulation creeDonnees(String fichierDonnees) {
+    /////////////////////////////////////////////////////////
+    
+    public Case creeCase(int lig, int col) throws DataFormatException{
     	
+    	ignorerCommentaires();
+        String chaineNature = new String();
+        try {
+        	chaineNature = scanner.next();
+            verifieLigneTerminee();
+            Case maCase = new Case(lig, col, NatureTerrain.valueOf(chaineNature));
+            return maCase;
+
+        } catch (NoSuchElementException e) {
+            throw new DataFormatException("format de case invalide. "
+                    + "Attendu: nature altitude [valeur_specifique]");
+        }
+        
+    }
+    
+    
+    public Carte creeCarte() throws DataFormatException{
+    	ignorerCommentaires();
+        try {
+ 
+        	int nbLignes = scanner.nextInt();
+            int nbColonnes = scanner.nextInt();
+            int tailleCases = scanner.nextInt();
+
+            Case[][] matriceCase = new Case[nbLignes][];
+            for (int i=0 ; i<matriceCase.length; i++) 
+            	   matriceCase[i] = new Case[nbColonnes];
+            
+           
+            for (int lig = 0; lig < nbLignes; lig++) {
+                for (int col = 0; col < nbColonnes; col++) {
+                    matriceCase[lig][col] = creeCase(lig, col);
+                }
+            }
+            
+            return new Carte(nbLignes, nbColonnes, tailleCases, matriceCase);
+        } catch (NoSuchElementException e) {
+            throw new DataFormatException("Format invalide. "
+                    + "Attendu: nbLignes nbColonnes tailleCases");
+        }
+    	
+    }
+    
+    public Robot[] creeRobots(Carte maCarte) throws DataFormatException, VitesseUnpermited {
+        ignorerCommentaires();
+        try {
+            int nbRobots = scanner.nextInt();
+            Robot[] robots = new Robot[nbRobots];
+            for (int i = 0; i < nbRobots; i++) {
+                robots[i] = creeRobot(maCarte);
+            }
+            return robots;
+        } catch (NoSuchElementException e) {
+            throw new DataFormatException("Format invalide. "
+                    + "Attendu: nbRobots");
+        }
+    }
+    public Robot creeRobot(Carte maCarte) throws DataFormatException, VitesseUnpermited {
+        ignorerCommentaires();
+
+        try {
+            int lig = scanner.nextInt();
+            int col = scanner.nextInt();
+            String type = scanner.next();
+            String s = scanner.findInLine("(\\d+)");	
+            verifieLigneTerminee();
+            if (type.equals("DRONE")) {
+            	if (s == null) {
+            		return new Drone(maCarte.getCase(lig, col), 0);
+                } else {
+                    return new Drone(maCarte.getCase(lig, col), 0, Integer.parseInt(s));
+                }
+            }
+            
+            else if (type.equals("PATTES")) {
+            	return new RobotPattes(maCarte.getCase(lig, col), 0);
+                }
+            
+            else if (type.equals("CHENILLES")) {
+            	if (s == null) {
+            		return new RobotChenille(maCarte.getCase(lig, col), 0);
+                } else {
+                    return new RobotChenille(maCarte.getCase(lig, col), 0, Integer.parseInt(s));
+                }
+            }
+            
+            else{
+            	if (s == null) {
+            		return new RobotRoue(maCarte.getCase(lig, col), 0);
+                } else {
+                    return new RobotRoue(maCarte.getCase(lig, col), 0, Integer.parseInt(s));
+                }
+            }
+            
+
+        } catch (NoSuchElementException e) {
+            throw new DataFormatException("format de robot invalide. "
+                    + "Attendu: ligne colonne type [valeur_specifique]");
+        }
+    }
+    
+    public Incendie[] creeIncendies(Carte maCarte) throws DataFormatException {
+        ignorerCommentaires();
+        try {
+            int nbIncendies = scanner.nextInt();
+            Incendie[] tabIncendie = new Incendie[nbIncendies];
+            for (int i = 0; i < nbIncendies; i++) {
+                tabIncendie[i] = creeIncendie(maCarte);
+            }
+            return tabIncendie;
+
+        } catch (NoSuchElementException e) {
+            throw new DataFormatException("Format invalide. "
+                    + "Attendu: nbIncendies");
+        }
+    }
+
+
+    private Incendie creeIncendie(Carte maCarte) throws DataFormatException {
+        ignorerCommentaires();
+
+        try {
+            int lig = scanner.nextInt();
+            int col = scanner.nextInt();
+            int intensite = scanner.nextInt();
+            if (intensite <= 0) {
+                throw new DataFormatException("incendie situee en " + lig+'*'+col
+                        + "nb litres pour eteindre doit etre > 0");
+            }
+            verifieLigneTerminee();
+            
+            return new Incendie(maCarte.getCase(lig, col), intensite);
+
+        } catch (NoSuchElementException e) {
+            throw new DataFormatException("format d'incendie invalide. "
+                    + "Attendu: ligne colonne intensite");
+        }
+    }
+    
+    public static DonneesSimulation creeDonnees(String fichierDonnees) {
+    	DonneesSimulation donnees = new DonneesSimulation;
+    	donnees.carte = creeCarte();
     }
 }
