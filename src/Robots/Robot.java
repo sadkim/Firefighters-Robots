@@ -18,10 +18,7 @@ abstract public class Robot {
 	protected int quantiteEau = 0;
 	protected int vitesse;
 	protected GraphicalElement  graphic;
-	protected ImageObserver obs=new JFrame();
-	public GraphicalElement getGraphic() {
-		return graphic;
-	}
+	abstract public GraphicalElement getGraphic() ;
 
 
 	public ImageObserver getObs() {

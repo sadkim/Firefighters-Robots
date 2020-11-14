@@ -7,9 +7,9 @@ public class RobotPattes extends Robot {
 
 	public RobotPattes(Case position, int quantiteEau) {
 		super(position, quantiteEau, 30);
-		int taille =40;
-		String fileName=NatureTerrain.ROCHE.getFilePath();
-		graphic = new ImageElement(0,0,fileName,50,50,obs);
+		int taille =50;
+		String fileName= "img/robotpattes.png";
+		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);
 	}
 
 	@Override
