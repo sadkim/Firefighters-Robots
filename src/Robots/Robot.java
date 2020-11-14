@@ -1,8 +1,7 @@
 package Robots;
 import Exception.incompatibleVolume;
 import Exception.insuficcientQuantity;
-import mapping.Case;
-import mapping.NatureTerrain;
+import mapping.*;
 
 abstract public class Robot {
 	
@@ -33,7 +32,7 @@ abstract public class Robot {
 		
 	
 	
-	public void deverserEau(int vol) throws incompatibleVolume, insuficcientQuantity {
+	public void deverserEau(int vol, Incendie incendie) throws incompatibleVolume, insuficcientQuantity {
 		//TODO Réduire quantité d'eau nécessaire au cas d'incendie
 		if((vol % getInterventionVolume())!=0) {
 			throw new incompatibleVolume("should be a multiple of " +
@@ -44,7 +43,10 @@ abstract public class Robot {
 				getQuantiteEau() + " L tied to use" + vol + " L resevoire max quantity is "
 					+ getMaxQuantite() );
 		}
-		this.quantiteEau = quantiteEau-vol;
+		int val_init = incendie.getVolPourEteindre();
+		incendie.setVol(vol);
+		int val_end = incendie.getVolPourEteindre();
+		this.quantiteEau -= (val_init - val_end);
 		
 	}
 	

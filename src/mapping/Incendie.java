@@ -1,5 +1,6 @@
 package mapping;
 
+
 public class Incendie {
 	private Case position;
 	private int volPourEteindre;
@@ -17,5 +18,7 @@ public class Incendie {
 	public int getVolPourEteindre() {
 		return volPourEteindre;
 	}
-	
+	public void setVol(int vol) {
+		this.volPourEteindre = Math.max(0, this.volPourEteindre - vol);
+	}
 }

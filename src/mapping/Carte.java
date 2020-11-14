@@ -1,5 +1,6 @@
 package mapping;
 
+
 import Exception.InvalidCase;
 
 public class Carte {
