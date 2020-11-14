@@ -19,11 +19,14 @@
 /main.class
 /Pompier.class
 /bin/
-/Robots/
-<<<<<<< HEAD
-=======
-/mapping/
+/.classpath
+/.gitignore
+/.project
+/Exception/
+/Gui/
 /LectureDonnees/
-/tests/
->>>>>>> 1a763782cfeb54b136e2b60ea2ee0c52685933fb
+/Robots/
 /io/
+/mapping/
+/tests/
+/Evenement/
