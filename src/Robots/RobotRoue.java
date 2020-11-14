@@ -1,26 +1,11 @@
 package Robots;
-import java.awt.image.ImageObserver;
-
 import Exception.VitesseUnpermited;
-import gui.GraphicalElement;
 import gui.ImageElement;
 import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotRoue extends Robot {
-	protected GraphicalElement  graphic;
-	protected ImageObserver obs;
-	@Override
 
-	public GraphicalElement getGraphic() {
-		return graphic;
-	}
-
-	@Override
-
-	public ImageObserver getObs() {
-		return obs;
-	}
 	public RobotRoue(Case position, int quantiteEau, int vitesse) throws VitesseUnpermited {
 		super(position, quantiteEau, vitesse);
 		if(vitesse<0) {

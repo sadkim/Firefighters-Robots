@@ -1,28 +1,15 @@
 package Robots;
-import java.awt.image.ImageObserver;
-
-import gui.GraphicalElement;
 import gui.ImageElement;
 import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotPattes extends Robot {
-	protected GraphicalElement  graphic;
-	protected ImageObserver obs;
-	@Override
-	public GraphicalElement getGraphic() {
-		return graphic;
-	}
 
-	@Override
-	public ImageObserver getObs() {
-		return obs;
-	}
 	public RobotPattes(Case position, int quantiteEau) {
 		super(position, quantiteEau, 30);
 		int taille =40;
 		String fileName=NatureTerrain.ROCHE.getFilePath();
-		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);
+		graphic = new ImageElement(0,0,fileName,50,50,obs);
 	}
 
 	@Override

@@ -30,7 +30,7 @@ public class DonneesSimulation {
 				}
 			}
 			for(int i=0; i<robots.length;i++) {
-					//gui.addGraphicalElement(robots[i].getGraphic());
+					gui.addGraphicalElement(robots[i].getGraphic());
 			}
 		}
 		

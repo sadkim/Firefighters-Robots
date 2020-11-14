@@ -1,8 +1,13 @@
 package Robots;
+import java.applet.Applet;
+import java.awt.Component;
 import java.awt.image.ImageObserver;
+
+import javax.swing.JFrame;
 
 import Exception.incompatibleVolume;
 import Exception.insuficcientQuantity;
+import gui.GUISimulator;
 import gui.GraphicalElement;
 import mapping.*;
 
@@ -12,11 +17,16 @@ abstract public class Robot {
 	protected Case position;
 	protected int quantiteEau = 0;
 	protected int vitesse;
-	
-	abstract public GraphicalElement getGraphic() ;
+	protected GraphicalElement  graphic;
+	protected ImageObserver obs=new JFrame();
+	public GraphicalElement getGraphic() {
+		return graphic;
+	}
 
 
-	abstract public ImageObserver getObs() ;
+	public ImageObserver getObs() {
+		return obs;
+	}
 
 
 	public Robot(Case position, int quantiteEau, int vitesse) {
