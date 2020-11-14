@@ -22,8 +22,9 @@ public class Case {
 		this.ligne = ligne;
 		this.colonne = colonne;
 		this.nature = nature;
-		String fileName=nature.getFilePath();		
-		graphic = new ImageElement(colonne,ligne,fileName,50,50,obs);
+		String fileName=nature.getFilePath();
+		int taille =40;
+		graphic = new ImageElement(this.colonne*taille,this.ligne*taille,fileName,taille,taille,obs);
 	}
 	
 	
