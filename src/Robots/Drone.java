@@ -10,7 +10,6 @@ import mapping.NatureTerrain;
 
 public class Drone extends Robot {
 	
-	protected GraphicalElement  graphic;
 	protected ImageObserver obs;
 	@Override
 
@@ -31,8 +30,8 @@ public class Drone extends Robot {
 		}else if(vitesse<0) {
 			throw new VitesseUnpermited("vitesse negative :" + vitesse + " km/h");
 		}
-		int taille =40;
-		String fileName=NatureTerrain.ROCHE.getFilePath();
+		int taille =50;
+		String fileName= "img/drone.png";
 		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);
 	}
 	public Drone(Case position, int quantiteEau) throws VitesseUnpermited {

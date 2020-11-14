@@ -8,7 +8,7 @@ import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotChenille extends Robot {
-	protected GraphicalElement  graphic;
+	
 	protected ImageObserver obs;
 	@Override
 
@@ -29,8 +29,8 @@ public class RobotChenille extends Robot {
 		}else if(vitesse<0) {
 			throw new VitesseUnpermited("vitesse negative :" + vitesse + " km/h");
 		}
-		int taille =40;
-		String fileName=NatureTerrain.ROCHE.getFilePath();
+		int taille =50;
+		String fileName= "img/robotchenille.png";
 		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);	}
 	public RobotChenille(Case position, int quantiteEau) throws VitesseUnpermited {
 		this(position, quantiteEau, 60);

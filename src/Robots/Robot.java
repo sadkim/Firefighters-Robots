@@ -12,6 +12,7 @@ abstract public class Robot {
 	protected Case position;
 	protected int quantiteEau = 0;
 	protected int vitesse;
+	protected GraphicalElement  graphic;
 	
 	abstract public GraphicalElement getGraphic() ;
 

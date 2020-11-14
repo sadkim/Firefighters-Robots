@@ -342,12 +342,16 @@ public class LecteurDonnees {
                 }
             }
             
-            else{
+            else if (type.equals("ROUES")) {
             	if (s == null) {
             		return new RobotRoue(maCarte.getCase(lig, col), 0);
                 } else {
                     return new RobotRoue(maCarte.getCase(lig, col), 0, Integer.parseInt(s));
                 }
+            }
+            
+            else{
+            	return null;
             }
             
 

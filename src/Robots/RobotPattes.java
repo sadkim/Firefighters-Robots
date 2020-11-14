@@ -7,7 +7,6 @@ import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotPattes extends Robot {
-	protected GraphicalElement  graphic;
 	protected ImageObserver obs;
 	@Override
 	public GraphicalElement getGraphic() {
@@ -20,8 +19,8 @@ public class RobotPattes extends Robot {
 	}
 	public RobotPattes(Case position, int quantiteEau) {
 		super(position, quantiteEau, 30);
-		int taille =40;
-		String fileName=NatureTerrain.ROCHE.getFilePath();
+		int taille =50;
+		String fileName= "img/robotpattes.png";
 		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);
 	}
 
