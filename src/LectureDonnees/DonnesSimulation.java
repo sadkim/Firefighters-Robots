@@ -1,3 +1,4 @@
+package LectureDonnees;
 import Robots.Robot;
 import mapping.Carte;
 import mapping.Incendie;
