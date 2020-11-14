@@ -7,7 +7,8 @@ import gui.GUISimulator;
 import gui.Rectangle;
 import gui.Simulable;
 import gui.Text;
-
+import mapping.*;
+import LectureDonnees.*;
 
 public class TestInvader {
     public static void main(String[] args) {
