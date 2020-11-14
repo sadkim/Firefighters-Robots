@@ -23,7 +23,7 @@ public class Case {
 		this.colonne = colonne;
 		this.nature = nature;
 		String fileName=nature.getFilePath();
-		int taille =40;
+		int taille =50;
 		graphic = new ImageElement(this.colonne*taille,this.ligne*taille,fileName,taille,taille,obs);
 	}
 	
