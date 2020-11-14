@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.zip.DataFormatException;
 
 import Exception.VitesseUnpermited;
-import LectureDonnees.DonneesSimulation;
 import io.LecteurDonnees;
 
 public class Pompier {

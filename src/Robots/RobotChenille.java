@@ -14,15 +14,10 @@ public class RobotChenille extends Robot {
 		}else if(vitesse<0) {
 			throw new VitesseUnpermited("vitesse negative :" + vitesse + " km/h");
 		}
-<<<<<<< HEAD
-		int taille =40;
-		String fileName=NatureTerrain.ROCHE.getFilePath();
-		graphic = new ImageElement(0,0,fileName,50,50,obs);}
-=======
+
 		int taille =50;
 		String fileName= "img/robotchenille.png";
 		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);	}
->>>>>>> a5f5c5664bad3b07e43c7fb08dc3ab1ba791d5a2
 	public RobotChenille(Case position, int quantiteEau) throws VitesseUnpermited {
 		this(position, quantiteEau, 60);
 	}

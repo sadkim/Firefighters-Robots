@@ -7,8 +7,6 @@ import java.awt.Color;
 import Gui.Simulateur;
 import Robots.*;
 import gui.GUISimulator;
-import gui.GraphicalElement;
-import gui.ImageElement;
 
 
 public class DonneesSimulation {
@@ -26,7 +24,6 @@ public class DonneesSimulation {
 			int height = carte.getNbColonnes() * 55;
 			int width = carte.getNbLignes() * 55;
 			gui= new GUISimulator(height,width,Color.white,new Simulateur());
-			String fileName = "/home/imadrafai/tpjava/img/habitat.png";
 			for(int i=0; i<carte.getNbLignes();i++) {
 				for(int j = 0; j<carte.getNbColonnes();j++) {
 					gui.addGraphicalElement(carte.getCase(i, j).getGraphic());
