@@ -2,6 +2,7 @@ package io;
 
 import Robots.*;
 import mapping.*;
+import LectureDonnees.*;
 import java.io.*;
 import java.util.*;
 import java.util.zip.DataFormatException;
@@ -251,7 +252,7 @@ public class LecteurDonnees {
     
     /////////////////////////////////////////////////////////
     
-    public Case creeCase(int lig, int col) throws DataFormatException{
+    private Case creeCase(int lig, int col) throws DataFormatException{
     	
     	ignorerCommentaires();
         String chaineNature = new String();
@@ -371,7 +372,7 @@ public class LecteurDonnees {
     }
 
 
-    private Incendie creeIncendie(Carte maCarte) throws DataFormatException {
+    public Incendie creeIncendie(Carte maCarte) throws DataFormatException {
         ignorerCommentaires();
 
         try {
@@ -392,8 +393,10 @@ public class LecteurDonnees {
         }
     }
     
-    public static DonneesSimulation creeDonnees(String fichierDonnees) {
-    	DonneesSimulation donnees = new DonneesSimulation;
-    	donnees.carte = creeCarte();
+    public DonneesSimulation creeDonnees(String fichierDonnees) throws DataFormatException, VitesseUnpermited, FileNotFoundException {
+        scanner = new Scanner(new File(fichierDonnees));
+        scanner.useLocale(Locale.US);
+    	Carte maCarte = creeCarte();
+    	return new DonneesSimulation(maCarte, creeRobots(maCarte), creeIncendies(maCarte));
     }
 }

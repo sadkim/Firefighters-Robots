@@ -1,5 +1,9 @@
+package LectureDonnees;
+
 import mapping.*;
 import Robots.*;
+
+
 public class DonneesSimulation {
 		public Carte carte;
 		public Robot[] robots;
@@ -13,4 +17,3 @@ public class DonneesSimulation {
 		}
 		
 }
-

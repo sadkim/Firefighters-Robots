@@ -1,6 +1,7 @@
 package mapping;
 
 
+
 public class Case {
 	private int ligne;
 	private int colonne;
