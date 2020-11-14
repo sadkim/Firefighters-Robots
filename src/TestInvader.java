@@ -7,14 +7,13 @@ import gui.GUISimulator;
 import gui.Rectangle;
 import gui.Simulable;
 import gui.Text;
-import mapping.*;
-import LectureDonnees.*;
+
 
 public class TestInvader {
     public static void main(String[] args) {
-        // crée la fenêtre graphique dans laquelle dessiner
+        // cree la fenetre graphique dans laquelle dessiner
         GUISimulator gui = new GUISimulator(800, 600, Color.BLACK);
-        // crée l'invader, en l'associant à la fenêtre graphique précédente
+        // crée l invader  en l associant a la fenetre graphique precedente
         Invader invader = new Invader(gui, Color.decode("#f2ff28"));
     }
 }
