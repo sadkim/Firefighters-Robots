@@ -2,5 +2,7 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="/home/ensimag/Downloads/codeEtudiants/bin/gui.jar"/>
+	<classpathentry kind="lib" path="/home/ensimag/tpjava/bin/gui.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

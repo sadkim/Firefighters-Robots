@@ -41,6 +41,9 @@ public class RobotPattes extends Robot {
 	public int getMaxQuantite() {
 		return 0;
 	}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> d3dd6a86703322970f9459a7a95a879cc2b1bf3a
 }

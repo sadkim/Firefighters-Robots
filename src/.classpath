@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path=""/>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -11,5 +12,9 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+=======
+	<classpathentry kind="lib" path="/home/ensimag/Downloads/codeEtudiants/bin/gui.jar"/>
+	<classpathentry kind="lib" path="/home/ensimag/tpjava/bin/gui.jar"/>
+>>>>>>> d3dd6a86703322970f9459a7a95a879cc2b1bf3a
 	<classpathentry kind="output" path=""/>
 </classpath>

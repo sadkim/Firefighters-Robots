@@ -16,13 +16,10 @@
 /RobotRoue.class
 /RobotPattes.class
 /DonnesSimulation.class
-/.classpath
-/.gitignore
-/.project
-/DonneesSimulation.class
-/Exception/
+/main.class
+/Pompier.class
 /io/
+/tests/
 /Robots/
-/hhhh/
 /mapping/
 /LectureDonnees/

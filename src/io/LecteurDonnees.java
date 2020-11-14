@@ -34,6 +34,7 @@ import Exception.VitesseUnpermited;
 public class LecteurDonnees {
 
 
+	
     /**
      * Lit et affiche le contenu d'un fichier de donnees (cases,
      * robots et incendies).
@@ -63,7 +64,7 @@ public class LecteurDonnees {
      * Constructeur prive; impossible d'instancier la classe depuis l'exterieur
      * @param fichierDonnees nom du fichier a lire
      */
-    private LecteurDonnees(String fichierDonnees)
+    public LecteurDonnees(String fichierDonnees)
         throws FileNotFoundException {
         scanner = new Scanner(new File(fichierDonnees));
         scanner.useLocale(Locale.US);
@@ -234,7 +235,7 @@ public class LecteurDonnees {
 
 
     /** Ignore toute (fin de) ligne commencant par '#' */
-    private void ignorerCommentaires() {
+    private static void ignorerCommentaires() {
         while(scanner.hasNext("#.*")) {
             scanner.nextLine();
         }
@@ -244,7 +245,7 @@ public class LecteurDonnees {
      * Verifie qu'il n'y a plus rien a lire sur cette ligne (int ou float).
      * @throws ExceptionFormatDonnees
      */
-    private void verifieLigneTerminee() throws DataFormatException {
+    private static void verifieLigneTerminee() throws DataFormatException {
         if (scanner.findInLine("(\\d+)") != null) {
             throw new DataFormatException("format invalide, donnees en trop.");
         }
@@ -252,7 +253,7 @@ public class LecteurDonnees {
     
     /////////////////////////////////////////////////////////
     
-    private Case creeCase(int lig, int col) throws DataFormatException{
+    private static Case creeCase(int lig, int col) throws DataFormatException{
     	
     	ignorerCommentaires();
         String chaineNature = new String();
@@ -270,7 +271,7 @@ public class LecteurDonnees {
     }
     
     
-    public Carte creeCarte() throws DataFormatException{
+    private static Carte creeCarte() throws DataFormatException{
     	ignorerCommentaires();
         try {
  
@@ -285,6 +286,7 @@ public class LecteurDonnees {
            
             for (int lig = 0; lig < nbLignes; lig++) {
                 for (int col = 0; col < nbColonnes; col++) {
+               	// System.out.println(lig +" "+ col);
                     matriceCase[lig][col] = creeCase(lig, col);
                 }
             }
@@ -297,7 +299,7 @@ public class LecteurDonnees {
     	
     }
     
-    public Robot[] creeRobots(Carte maCarte) throws DataFormatException, VitesseUnpermited {
+    private static Robot[] creeRobots(Carte maCarte) throws DataFormatException, VitesseUnpermited {
         ignorerCommentaires();
         try {
             int nbRobots = scanner.nextInt();
@@ -311,7 +313,7 @@ public class LecteurDonnees {
                     + "Attendu: nbRobots");
         }
     }
-    public Robot creeRobot(Carte maCarte) throws DataFormatException, VitesseUnpermited {
+    private static Robot creeRobot(Carte maCarte) throws DataFormatException, VitesseUnpermited {
         ignorerCommentaires();
 
         try {
@@ -355,7 +357,7 @@ public class LecteurDonnees {
         }
     }
     
-    public Incendie[] creeIncendies(Carte maCarte) throws DataFormatException {
+    private static Incendie[] creeIncendies(Carte maCarte) throws DataFormatException {
         ignorerCommentaires();
         try {
             int nbIncendies = scanner.nextInt();
@@ -372,13 +374,18 @@ public class LecteurDonnees {
     }
 
 
-    public Incendie creeIncendie(Carte maCarte) throws DataFormatException {
+    public static Incendie creeIncendie(Carte maCarte) throws DataFormatException {
         ignorerCommentaires();
-
+        
         try {
             int lig = scanner.nextInt();
             int col = scanner.nextInt();
+            
+            //System.out.println(lig +" " +col);
+            //System.out.println("jj");
             int intensite = scanner.nextInt();
+            //System.out.println("jiji");
+            //System.out.println(intensite);
             if (intensite <= 0) {
                 throw new DataFormatException("incendie situee en " + lig+'*'+col
                         + "nb litres pour eteindre doit etre > 0");
@@ -393,10 +400,12 @@ public class LecteurDonnees {
         }
     }
     
-    public DonneesSimulation creeDonnees(String fichierDonnees) throws DataFormatException, VitesseUnpermited, FileNotFoundException {
+    public static DonneesSimulation creeDonnees(String fichierDonnees) throws DataFormatException, VitesseUnpermited, FileNotFoundException {
         scanner = new Scanner(new File(fichierDonnees));
         scanner.useLocale(Locale.US);
     	Carte maCarte = creeCarte();
-    	return new DonneesSimulation(maCarte, creeRobots(maCarte), creeIncendies(maCarte));
+    	DonneesSimulation donnees = new DonneesSimulation(maCarte, creeIncendies(maCarte) , creeRobots(maCarte) );
+    	scanner.close();
+    	return donnees;
     }
 }
