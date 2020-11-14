@@ -1,22 +1,10 @@
 package Robots;
-import java.awt.image.ImageObserver;
-
-import gui.GraphicalElement;
 import gui.ImageElement;
 import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotPattes extends Robot {
-	protected ImageObserver obs;
-	@Override
-	public GraphicalElement getGraphic() {
-		return graphic;
-	}
 
-	@Override
-	public ImageObserver getObs() {
-		return obs;
-	}
 	public RobotPattes(Case position, int quantiteEau) {
 		super(position, quantiteEau, 30);
 		int taille =50;

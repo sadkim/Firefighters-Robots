@@ -1,26 +1,11 @@
 package Robots;
-import java.awt.image.ImageObserver;
-
 import Exception.VitesseUnpermited;
-import gui.GraphicalElement;
 import gui.ImageElement;
 import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotChenille extends Robot {
 	
-	protected ImageObserver obs;
-	@Override
-
-	public GraphicalElement getGraphic() {
-		return graphic;
-	}
-
-	@Override
-
-	public ImageObserver getObs() {
-		return obs;
-	}
 	public RobotChenille(Case position, int quantiteEau, int vitesse) throws VitesseUnpermited {
 		super(position, quantiteEau, vitesse);
 		if(vitesse>150) {
@@ -29,6 +14,7 @@ public class RobotChenille extends Robot {
 		}else if(vitesse<0) {
 			throw new VitesseUnpermited("vitesse negative :" + vitesse + " km/h");
 		}
+
 		int taille =50;
 		String fileName= "img/robotchenille.png";
 		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);	}
