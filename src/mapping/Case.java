@@ -11,7 +11,7 @@ public class Case {
 	private int colonne;
 	private NatureTerrain nature;
 	private GraphicalElement  graphic;
-	private ImageObserver obs;
+	private ImageObserver obs=null;
 	
 	public ImageObserver getObs() {
 		return obs;
@@ -24,7 +24,7 @@ public class Case {
 		this.nature = nature;
 		String fileName=nature.getFilePath();		
 		int taille =50;
-		graphic = new ImageElement(this.colonne*taille,this.ligne*taille,fileName,taille,taille,null);
+		graphic = new ImageElement(this.colonne*taille,this.ligne*taille,fileName,taille,taille,obs);
 	}
 	
 	

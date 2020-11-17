@@ -1,15 +1,18 @@
 package Robots;
 
-import Exception.VitesseUnpermited;
+
+import Exceptions.VitesseUnpermited;
 import gui.ImageElement;
+import mapping.Carte;
 import mapping.Case;
 import mapping.NatureTerrain;
 
 public class Drone extends Robot {
 	
 
-	public Drone(Case position, int quantiteEau, int vitesse) throws VitesseUnpermited {
+	public Drone(Case position, int quantiteEau, int vitesse, Carte maCarte) throws VitesseUnpermited {
 		super(position, quantiteEau, vitesse);
+		this.maCarte = maCarte;
 		if(vitesse>150) {
 			throw new VitesseUnpermited("vitesse maximal ne doit pas depasser 150 km/h"
 					+ " vitesse trouvé"+ vitesse +" km/h");
@@ -21,8 +24,8 @@ public class Drone extends Robot {
 		String fileName= "img/drone.png";
 		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);
 	}
-	public Drone(Case position, int quantiteEau) throws VitesseUnpermited {
-		this(position,quantiteEau,150);
+	public Drone(Case position, int quantiteEau, Carte maCarte) throws VitesseUnpermited {
+		this(position,quantiteEau,150,maCarte);
 	}
 
 	@Override
@@ -50,6 +53,12 @@ public class Drone extends Robot {
 	public int getRemplisagetime() {
 		return 30*60;
 	}
+	@Override
+	public boolean caseAccessible(Case maCase) {
+		return true;
+	}
+	
+	
 	
 
 }

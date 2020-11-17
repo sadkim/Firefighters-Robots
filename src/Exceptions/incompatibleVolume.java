@@ -1,36 +1,35 @@
-package Exception;
-
-public class insuficcientQuantity extends Exception {
+package Exceptions;
+public class incompatibleVolume extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public insuficcientQuantity() {
+	public incompatibleVolume() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public insuficcientQuantity(String message, Throwable cause, boolean enableSuppression,
-			boolean writableStackTrace) {
+	public incompatibleVolume(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
 
-	public insuficcientQuantity(String message, Throwable cause) {
+	public incompatibleVolume(String message, Throwable cause) {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
 
-	public insuficcientQuantity(String message) {
+	public incompatibleVolume(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
 
-	public insuficcientQuantity(Throwable cause) {
+	public incompatibleVolume(Throwable cause) {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	
 }

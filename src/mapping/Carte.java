@@ -1,7 +1,7 @@
 package mapping;
 
 
-import Exception.InvalidCase;
+import Exceptions.InvalidCase;
 
 public class Carte {
 	private int tailleCases;
@@ -61,6 +61,20 @@ public class Carte {
 		}
 		}
 		throw new InvalidCase("pas de voisin");
+	}
+	
+	public boolean voisinEau(Case src) throws InvalidCase {
+		NatureTerrain eau = NatureTerrain.valueOf("EAU");
+		boolean nord = voisinExiste(src, Direction.NORD) && 
+						getVoisin(src, Direction.NORD).getNature().equals(eau);
+		boolean est = voisinExiste(src, Direction.EST) && 
+						getVoisin(src, Direction.EST).getNature().equals(eau);
+		boolean ouest = voisinExiste(src, Direction.OUEST) && 
+				getVoisin(src, Direction.OUEST).getNature().equals(eau);
+		boolean sud = voisinExiste(src, Direction.SUD) && 
+				getVoisin(src, Direction.SUD).getNature().equals(eau);
+		
+		return nord || est || ouest || sud;
 	}
 	
 

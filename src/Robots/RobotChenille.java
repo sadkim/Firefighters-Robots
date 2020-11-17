@@ -1,13 +1,16 @@
 package Robots;
-import Exception.VitesseUnpermited;
+
+import Exceptions.VitesseUnpermited;
 import gui.ImageElement;
+import mapping.Carte;
 import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotChenille extends Robot {
 	
-	public RobotChenille(Case position, int quantiteEau, int vitesse) throws VitesseUnpermited {
+	public RobotChenille(Case position, int quantiteEau, int vitesse, Carte maCarte) throws VitesseUnpermited {
 		super(position, quantiteEau, vitesse);
+		this.maCarte = maCarte; 
 		if(vitesse>150) {
 			throw new VitesseUnpermited("vitesse maximal ne doit pas depasser 150 km/h"
 					+ " vitesse trouvé"+ vitesse +" km/h");
@@ -18,9 +21,23 @@ public class RobotChenille extends Robot {
 		int taille =50;
 		String fileName= "img/robotchenille.png";
 		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);	}
-	public RobotChenille(Case position, int quantiteEau) throws VitesseUnpermited {
-		this(position, quantiteEau, 60);
+	
+	
+	public RobotChenille(Case position, int quantiteEau, Carte maCarte) throws VitesseUnpermited {
+		this(position, quantiteEau, 60, maCarte);
 	}
+	
+	@Override
+	public boolean caseAccessible(Case maCase) {
+		
+		if (maCase.getNature().equals(NatureTerrain.valueOf("EAU")) ||
+				maCase.getNature().equals(NatureTerrain.valueOf("ROCHE"))) {
+			return false;
+
+		}
+		return true;
+	}
+	
 
 	@Override
 	public double getVitesse(NatureTerrain nature) {

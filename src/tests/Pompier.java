@@ -2,7 +2,7 @@ package tests;
 import java.io.FileNotFoundException;
 import java.util.zip.DataFormatException;
 
-import Exception.VitesseUnpermited;
+import Exceptions.VitesseUnpermited;
 import io.LecteurDonnees;
 
 public class Pompier {

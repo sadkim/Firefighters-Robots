@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.*;
 import java.util.zip.DataFormatException;
 
-import Exception.VitesseUnpermited;
+import Exceptions.VitesseUnpermited;
 
 
 
@@ -324,29 +324,29 @@ public class LecteurDonnees {
             verifieLigneTerminee();
             if (type.equals("DRONE")) {
             	if (s == null) {
-            		return new Drone(maCarte.getCase(lig, col), 0);
+            		return new Drone(maCarte.getCase(lig, col), 0, maCarte);
                 } else {
-                    return new Drone(maCarte.getCase(lig, col), 0, Integer.parseInt(s));
+                    return new Drone(maCarte.getCase(lig, col), 0, Integer.parseInt(s), maCarte);
                 }
             }
             
             else if (type.equals("PATTES")) {
-            	return new RobotPattes(maCarte.getCase(lig, col), 0);
+            	return new RobotPattes(maCarte.getCase(lig, col), 0, maCarte);
                 }
             
             else if (type.equals("CHENILLES")) {
             	if (s == null) {
-            		return new RobotChenille(maCarte.getCase(lig, col), 0);
+            		return new RobotChenille(maCarte.getCase(lig, col), 0, maCarte);
                 } else {
-                    return new RobotChenille(maCarte.getCase(lig, col), 0, Integer.parseInt(s));
+                    return new RobotChenille(maCarte.getCase(lig, col), 0, Integer.parseInt(s), maCarte);
                 }
             }
             
             else if (type.equals("ROUES")) {
             	if (s == null) {
-            		return new RobotRoue(maCarte.getCase(lig, col), 0);
+            		return new RobotRoue(maCarte.getCase(lig, col), 0, maCarte);
                 } else {
-                    return new RobotRoue(maCarte.getCase(lig, col), 0, Integer.parseInt(s));
+                    return new RobotRoue(maCarte.getCase(lig, col), 0, Integer.parseInt(s), maCarte);
                 }
             }
             
@@ -361,13 +361,13 @@ public class LecteurDonnees {
         }
     }
     
-    private static Incendie[] creeIncendies(Carte maCarte) throws DataFormatException {
+    private static List<Incendie> creeIncendies(Carte maCarte) throws DataFormatException {
         ignorerCommentaires();
         try {
             int nbIncendies = scanner.nextInt();
-            Incendie[] tabIncendie = new Incendie[nbIncendies];
+            List<Incendie> tabIncendie = new ArrayList<Incendie>();
             for (int i = 0; i < nbIncendies; i++) {
-                tabIncendie[i] = creeIncendie(maCarte);
+                tabIncendie.add(creeIncendie(maCarte));
             }
             return tabIncendie;
 
@@ -395,7 +395,6 @@ public class LecteurDonnees {
                         + "nb litres pour eteindre doit etre > 0");
             }
             verifieLigneTerminee();
-            
             return new Incendie(maCarte.getCase(lig, col), intensite);
 
         } catch (NoSuchElementException e) {

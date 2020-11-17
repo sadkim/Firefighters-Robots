@@ -1,14 +1,16 @@
 package Robots;
-import Exception.VitesseUnpermited;
+import Exceptions.VitesseUnpermited;
 import gui.ImageElement;
+import mapping.Carte;
 import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotRoue extends Robot {
 	
 
-	public RobotRoue(Case position, int quantiteEau, int vitesse) throws VitesseUnpermited {
+	public RobotRoue(Case position, int quantiteEau, int vitesse, Carte maCarte) throws VitesseUnpermited {
 		super(position, quantiteEau, vitesse);
+		this.maCarte = maCarte;
 		if(vitesse<0) {
 			throw new VitesseUnpermited("vitesse negative :" + vitesse + " km/h");
 		}
@@ -16,8 +18,8 @@ public class RobotRoue extends Robot {
 		String fileName = "img/robotroue.png";
 		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);	}
 
-	public RobotRoue(Case position, int quantiteEau) throws VitesseUnpermited {
-		this(position, quantiteEau, 80);
+	public RobotRoue(Case position, int quantiteEau, Carte maCarte) throws VitesseUnpermited {
+		this(position, quantiteEau, 80, maCarte);
 	}
 	@Override
 	public double getVitesse(NatureTerrain nature) {
@@ -30,6 +32,16 @@ public class RobotRoue extends Robot {
 		}
 	}
 
+	@Override
+	public boolean caseAccessible(Case maCase) {
+		if (!(maCase.getNature().equals(NatureTerrain.valueOf("TERRAIN_LIBRE")) ||
+				maCase.getNature().equals(NatureTerrain.valueOf("HABITAT")))) {
+			return false;
+
+		}
+		return true;
+	}
+	
 	@Override
 	public int getInterventionVolume() {
 		return 100;

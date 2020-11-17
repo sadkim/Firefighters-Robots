@@ -81,7 +81,7 @@ class Invader implements Simulable {
         // going right
         for (int x = xMin + 10; x <= xMax; x += 10) {
             xCoords.add(x);
-            yCoords.add(yMin);
+           yCoords.add(yMin);
         }
         // going down
         for (int y = yMin + 10; y <= xMin + 150; y += 10) {

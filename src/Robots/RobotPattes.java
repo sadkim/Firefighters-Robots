@@ -1,12 +1,14 @@
 package Robots;
 import gui.ImageElement;
+import mapping.Carte;
 import mapping.Case;
 import mapping.NatureTerrain;
 
 public class RobotPattes extends Robot {
 
-	public RobotPattes(Case position, int quantiteEau) {
+	public RobotPattes(Case position, int quantiteEau, Carte maCarte) {
 		super(position, quantiteEau, 30);
+		this.maCarte = maCarte;
 		int taille =50;
 		String fileName= "img/robotpattes.png";
 		graphic = new ImageElement(position.getColonne()*taille,position.getLigne()*taille,fileName,taille,taille,obs);
@@ -43,4 +45,13 @@ public class RobotPattes extends Robot {
 	public int getMaxQuantite() {
 		return 0;
 	}
+	
+	@Override
+	public boolean caseAccessible(Case maCase) {
+		if (maCase.getNature().equals(NatureTerrain.valueOf("EAU"))) {
+			return false;
+		}
+		return true;
+	}
+	
 }

@@ -7,17 +7,17 @@ import java.awt.Color;
 import Gui.Simulateur;
 import Robots.*;
 import gui.GUISimulator;
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class DonneesSimulation {
 		public Carte carte;
 		public Robot[] robots;
-		public Incendie [] incendies;
-		
+		public List<Incendie> incendies = new ArrayList<Incendie>(); 
 		private GUISimulator gui;		
 		
 		
-		public DonneesSimulation(Carte carte,  Incendie[] incendies, Robot[] robots) {
+		public DonneesSimulation(Carte carte,  List<Incendie> incendies, Robot[] robots) {
 			this.carte = carte;
 			this.robots = robots;
 			this.incendies = incendies;
@@ -33,6 +33,13 @@ public class DonneesSimulation {
 			for(int i=0; i < robots.length;i++) {
 					gui.addGraphicalElement(robots[i].getGraphic());
 			}
-		}
+			for(int i=0; i < incendies.size();i++) {
+					gui.addGraphicalElement(incendies.get(i).getGraphic());
+			}
+		
+	}
+    public GUISimulator getGui(){
+        return this.gui;
+    }
 		
 }
